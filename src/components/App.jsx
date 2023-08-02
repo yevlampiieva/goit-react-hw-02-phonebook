@@ -33,8 +33,10 @@ export class App extends Component {
     }
   };
 
-   deleteContact = (contactId) => {
-    this.setState((prevState) => ({ contacts: prevState.contacts.filter((contact) => contact.id !== contactId) }));
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
   };
 
   changeFilter = evt => {
@@ -48,8 +50,6 @@ export class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter)
     );
   };
-
-
 
   render() {
     const { filter } = this.state;

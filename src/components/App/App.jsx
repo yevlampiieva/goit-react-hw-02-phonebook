@@ -23,10 +23,8 @@ export class App extends Component {
       number,
     };
 
-    // fruits.some(fruits => fruits.amount > 0);
     if (this.state.contacts.some(contacts => contacts.name === name)) {
       alert(`${name} is already in contacts.`);
-      return;
     } else {
       this.setState(({ contacts }) => ({
         contacts: [contact, ...contacts],

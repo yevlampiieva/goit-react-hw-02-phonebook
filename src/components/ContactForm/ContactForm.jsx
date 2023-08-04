@@ -1,5 +1,11 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import {
+  ContactFormContainer,
+  ContactListLabel,
+  ContactListInput,
+  AddContactBtn,
+} from './ContactForm.styled';
 
 export class ContactForm extends Component {
   state = {
@@ -20,33 +26,33 @@ export class ContactForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-        </label>
-        <label>
-          Number
-          <input
-            type="tel"
-            name="number"
-            value={this.state.number}
-            onChange={this.handleChange}
-            pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+      <ContactFormContainer onSubmit={this.handleSubmit}>
+        <ContactListLabel htmlFor="contact__name">Name</ContactListLabel>
+        <ContactListInput
+          type="text"
+          name="name"
+          id="contact__name"
+          value={this.state.name}
+          onChange={this.handleChange}
+          pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          required
+        />
+
+        <ContactListLabel htmlFor="contact__number">Number</ContactListLabel>
+        <ContactListInput
+          type="tel"
+          name="number"
+          id="contact__number"
+          value={this.state.number}
+          onChange={this.handleChange}
+          pattern="\+?\d{1,4}?[\-.\s]?\(?\d{1,3}?\)?[\-.\s]?\d{1,4}[\-.\s]?\d{1,4}[\-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+
+        <AddContactBtn type="submit">Add contact</AddContactBtn>
+      </ContactFormContainer>
     );
   }
 }
